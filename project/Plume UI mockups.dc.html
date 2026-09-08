@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics=""><meta name="design_doc_mode" content="canvas"><link rel="stylesheet" href="industry.css"><style>
+body{margin:0;background:#e4e4e6;font-family:var(--font-body)}
+.dv-turn{padding:44px 48px 34px;border-bottom:1px solid rgba(0,0,0,.1);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 22px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1d2d3d;color:#f2f2f3;border-radius:0;text-decoration:none}
+.dv-tname{font-family:var(--font-heading);font-weight:600;font-size:14px;color:#1d1f20;letter-spacing:.02em}
+.dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(29,31,32,.1);color:#1d1f20;border-radius:0;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:9px;font:400 11.5px/1.3 var(--font-body);color:rgba(29,31,32,.6)}
+.dv-opt:target .dv-oid{background:#5980a6;color:#f2f2f3}
+.dv-next{margin:26px 0 0;font:12px/1.6 var(--font-body);color:rgba(29,31,32,.55)}
+.win{background:var(--color-bg);box-shadow:var(--shadow-lg);border:1px solid rgba(29,31,32,.28)}
+.tbar{display:flex;align-items:center;gap:10px;height:34px;padding:0 12px;background:#1d2d3d;color:#f2f2f3;font-family:var(--font-heading);font-weight:600;font-size:13.5px;letter-spacing:.02em}
+.tdot{width:9px;height:9px;border:1px solid rgba(242,242,243,.55)}
+.mbar{display:flex;align-items:center;gap:20px;height:29px;padding:0 12px;border-bottom:1px solid var(--color-divider);font-size:12px;color:rgba(29,31,32,.72)}
+.sec{font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(29,31,32,.5)}
+.fl{display:block;font-size:11px;letter-spacing:.01em;color:rgba(29,31,32,.68);margin-bottom:4px}
+.un{font-size:10px;color:rgba(29,31,32,.4);letter-spacing:.06em}
+.inp{width:100%;min-height:31px;padding:4px 9px;font-family:var(--font-body);font-size:13.5px;background:var(--color-surface);border:1px solid var(--color-divider);border-radius:0;color:var(--color-text)}
+.spec-n{font-family:var(--font-heading);font-weight:600;font-size:31px;line-height:1;letter-spacing:-.01em;color:#1d2d3d}
+.spec-u{font-size:10.5px;letter-spacing:.08em;color:rgba(29,31,32,.5);text-transform:uppercase}
+.ax{display:flex;justify-content:space-between;font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.5)}
+.stepn{display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--color-divider);font-family:var(--font-heading);font-weight:600;font-size:12px;flex:none}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Modelo Gaussiano v4.0 — tres reorganizaciones del flujo + un detalle</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Banco de trabajo — riel de etapas, columna de parámetros, lectura de resultados sobre el mapa</div>
+<div class="win blueprint" style="width:1360px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <div class="tbar"><span class="tdot"></span><span>Modelo Gaussiano de Pluma</span><span style="font-family:var(--font-body);font-weight:400;font-size:11.5px;opacity:.6;letter-spacing:.06em">v4.0 · Briggs + Pasquill-Gifford</span><span style="margin-left:auto;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;opacity:.55">caso_sin_titulo.pgm</span></div>
+  <div class="mbar"><span>Archivo</span><span>Modelo</span><span>Serie</span><span>Ver</span><span>Ayuda</span><span style="margin-left:auto;display:flex;align-items:center;gap:7px;font-size:11px;color:var(--color-accent-700)"><span style="width:6px;height:6px;background:var(--color-accent)"></span>Cálculo al día</span></div>
+  <div style="display:flex;align-items:stretch;height:826px">
+
+    <div style="width:196px;flex:none;border-right:1px solid var(--color-divider);display:flex;flex-direction:column;padding:16px 0">
+      <div class="sec" style="padding:0 14px 10px">Flujo de trabajo</div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--color-accent-100);border-left:2px solid var(--color-accent)"><span class="stepn" style="border-color:var(--color-accent);background:var(--color-accent);color:var(--color-bg)">1</span><span style="font-family:var(--font-heading);font-weight:600;font-size:14.5px">Fuente</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-left:2px solid transparent"><span class="stepn">2</span><span style="font-size:13.5px">Meteorología</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-left:2px solid transparent"><span class="stepn">3</span><span style="font-size:13.5px">Dominio y receptor</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-left:2px solid transparent"><span class="stepn">4</span><span style="font-size:13.5px">Análisis</span></div>
+      </div>
+      <div style="margin:20px 14px 0;padding-top:16px;border-top:1px solid var(--color-divider)">
+        <div class="sec" style="margin-bottom:9px">Estabilidad activa</div>
+        <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:var(--font-heading);font-weight:600;font-size:44px;line-height:.9;color:var(--color-accent-800)">{{ cA.cls }}</span><span style="font-size:11.5px;line-height:1.35;color:rgba(29,31,32,.6)">{{ clsDesc }}<br>fija por el usuario</span></div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;justify-content:space-between;font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)"><span>p (ley exp.)</span><span>{{ cA.p }}</span></div>
+          <div style="display:flex;justify-content:space-between;font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)"><span>σy, σz</span><span>P-G rural</span></div>
+        </div>
+      </div>
+      <div style="margin:auto 14px 0;display:flex;flex-direction:column;gap:6px">
+        <div class="sec" style="margin-bottom:3px">Exportar</div>
+        <button class="btn btn-secondary" style="justify-content:flex-start;font-size:12.5px">Curva (CSV)</button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;font-size:12.5px">Gráfica (PNG 300 dpi)</button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;font-size:12.5px">Informe del caso</button>
+      </div>
+    </div>
+
+    <div style="width:308px;flex:none;border-right:1px solid var(--color-divider);padding:16px 16px 0;overflow:hidden">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:14px"><h4 style="margin:0;font-size:19px">Parámetros de la fuente</h4><span style="font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.4)">1 / 4</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px 12px">
+        <div><label class="fl">Q — Emisión <span class="un">g/s</span></label><input class="inp" value="10.0"></div>
+        <div><label class="fl">Hs — Chimenea <span class="un">m</span></label><input class="inp" value="50.0"></div>
+        <div><label class="fl">d — Diámetro <span class="un">m</span></label><input class="inp" value="2.0"></div>
+        <div><label class="fl">vs — Salida <span class="un">m/s</span></label><input class="inp" value="15.0"></div>
+        <div><label class="fl">Ts — Gases <span class="un">K</span></label><input class="inp" value="420.0"></div>
+        <div><label class="fl" style="color:#8a2f2f">Ta — Ambiente <span class="un" style="color:#a33a3a">K</span></label><input class="inp" style="background:#fbecec;border-color:#a33a3a;box-shadow:inset 0 0 0 1px #a33a3a" value="430.0"></div>
+      </div>
+
+      <sc-if value="{{ showVal }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:11px;display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:#fbecec;border-left:2px solid #a33a3a">
+        <span style="font-family:var(--font-heading);font-weight:600;font-size:13px;color:#8a2f2f">Ta</span>
+        <span style="font-size:11.5px;line-height:1.4;color:#7a2b2b">Ta debe ser menor que Ts (420 K) para que exista flotabilidad; con Ts ≤ Ta la pluma no asciende y H = Hs. El mapa y los resultados siguen mostrando el último caso válido (Ta = 300 K).</span>
+      </div>
+      </sc-if>
+
+      <div style="margin:18px 0 0;padding-top:14px;border-top:1px solid var(--color-divider)">
+        <div class="sec" style="margin-bottom:9px">Supuestos activos</div>
+        <label style="display:flex;gap:9px;align-items:flex-start;margin-bottom:9px;cursor:pointer"><span style="width:14px;height:14px;flex:none;margin-top:2px;background:var(--color-accent);border:1px solid var(--color-accent);display:grid;place-items:center;color:var(--color-bg);font-size:10px;line-height:1">✓</span><span style="font-size:12.5px;line-height:1.35">Elevación de pluma con Briggs <span style="display:block;color:rgba(29,31,32,.5);font-size:11px">H(x) = Hs + Δh(x)</span></span></label>
+        <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer"><span style="width:14px;height:14px;flex:none;margin-top:2px;background:var(--color-accent);border:1px solid var(--color-accent);display:grid;place-items:center;color:var(--color-bg);font-size:10px;line-height:1">✓</span><span style="font-size:12.5px;line-height:1.35">Corregir viento con ley exponencial <span style="display:block;color:rgba(29,31,32,.5);font-size:11px">u(z) = u₁₀ · (z/10)<sup>p</sup></span></span></label>
+      </div>
+
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--color-divider)">
+        <div class="sec" style="margin-bottom:9px">Cadena de cálculo</div>
+        <div style="display:flex;flex-direction:column;gap:0;font:11px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.7)">
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(29,31,32,.07)"><span>F flotabilidad</span><span style="color:var(--color-accent-800)">{{ cA.F }} m⁴/s³</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(29,31,32,.07)"><span>Δh máx</span><span style="color:var(--color-accent-800)">{{ cA.dh }} m</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0"><span>u₁₀ → u_eff</span><span style="color:var(--color-accent-800)">5.0 → {{ cA.ueff }}</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:20px">
+        <button class="btn btn-primary blueprint" style="flex:2;font-size:14px;padding-block:9px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Calcular</button>
+        <button class="btn btn-secondary" style="flex:1;font-size:12.5px">Punto</button>
+      </div>
+      <div style="margin-top:7px;font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.4)">Enter en cualquier campo recalcula</div>
+    </div>
+
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;padding:16px 18px 18px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-divider);border:1px solid var(--color-divider);margin-bottom:16px">
+        <div style="background:var(--color-bg);padding:11px 13px"><div class="spec-u" style="margin-bottom:5px">C máx</div><div style="display:flex;align-items:baseline;gap:5px"><span class="spec-n">{{ cA.cmax }}</span><span class="spec-u">μg/m³</span></div></div>
+        <div style="background:var(--color-bg);padding:11px 13px"><div class="spec-u" style="margin-bottom:5px">x en C máx</div><div style="display:flex;align-items:baseline;gap:5px"><span class="spec-n">{{ cA.xmax }}</span><span class="spec-u">m</span></div></div>
+        <div style="background:var(--color-bg);padding:11px 13px"><div class="spec-u" style="margin-bottom:5px">H efectiva</div><div style="display:flex;align-items:baseline;gap:5px"><span class="spec-n">{{ cA.hfinal }}</span><span class="spec-u">m</span></div></div>
+        <div style="background:var(--color-bg);padding:11px 13px"><div class="spec-u" style="margin-bottom:5px">u efectivo</div><div style="display:flex;align-items:baseline;gap:5px"><span class="spec-n">{{ cA.ueff }}</span><span class="spec-u">m/s</span></div></div>
+      </div>
+
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:9px"><h5 style="margin:0;font-size:15px">Concentración en el plano z = 0 m</h5><span style="font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.45)">dominio 3000 × 1200 m · clase {{ cA.cls }}</span><span style="margin-left:auto;display:flex;align-items:center;gap:14px;font-size:10.5px;color:rgba(29,31,32,.55)"><span style="display:flex;align-items:center;gap:6px"><span style="width:22px;height:0;border-top:1.5px dashed rgba(29,31,32,.85);box-shadow:none;background:rgba(29,31,32,05)"></span>isopleta {{ cA.iso }} μg/m³</span></span></div>
+      <div style="display:flex;gap:8px">
+        <div class="ax" style="flex-direction:column;align-items:flex-end;justify-content:space-between;height:326px;width:34px"><span>+600</span><span>+300</span><span>0</span><span>-300</span><span>-600</span></div>
+        <div style="flex:1;min-width:0">
+          <div class="blueprint" style="width:100%"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <canvas data-plume="1" data-cls="A" data-maxd="3000" data-tw="1200" width="1520" height="652" style="width:100%;height:326px;display:block"></canvas>
+          </div>
+          <div class="ax" style="margin-top:5px"><span>0</span><span>750</span><span>1500</span><span>2250</span><span>3000 m</span></div>
+        </div>
+        <div style="width:52px;flex:none;display:flex;flex-direction:column;gap:5px">
+          <div class="ax" style="justify-content:flex-start;font-size:9.5px">{{ cA.cmax }}</div>
+          <div style="flex:1;background:linear-gradient(0deg,#F2F2F3,#e1ecd6,#96be78,#d6ce6e,#e09e42,#c75c2d,#a82020);border:1px solid var(--color-divider)"></div>
+          <div class="ax" style="justify-content:flex-start;font-size:9.5px">0</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:baseline;gap:10px;margin:20px 0 9px"><h5 style="margin:0;font-size:15px">Perfil en el eje de la pluma (y = 0)</h5><span style="font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.45)">C(x, 0, z_rec)</span></div>
+      <div style="display:flex;gap:8px">
+        <div class="ax" style="flex-direction:column;align-items:flex-end;justify-content:space-between;height:184px;width:34px"><span>{{ cA.cmax }}</span><span>0</span></div>
+        <div style="flex:1;min-width:0">
+          <div class="blueprint" style="width:100%"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <canvas data-line="1" data-cls="A" data-maxd="3000" data-tw="1200" width="1520" height="368" style="width:100%;height:184px;display:block"></canvas>
+          </div>
+          <div class="ax" style="margin-top:5px"><span>0</span><span>750</span><span>1500</span><span>2250</span><span>3000 m</span></div>
+        </div>
+        <div style="width:52px"></div>
+      </div>
+
+      <div style="margin-top:auto;padding-top:16px;display:flex;align-items:flex-end;gap:18px">
+        <div style="width:190px"><label class="fl">Límite de concentración <span class="un">μg/m³</span></label><input class="inp" value="25.0"></div>
+        <div style="padding-bottom:2px"><div class="spec-u" style="margin-bottom:4px">Área con C ≥ límite</div><div style="display:flex;align-items:baseline;gap:5px"><span class="spec-n" style="font-size:25px">{{ cA.area }}</span><span class="spec-u">m²</span></div></div>
+        <div style="margin-left:auto;font:11px/1.5 ui-monospace,Menlo,monospace;color:rgba(29,31,32,.45);text-align:right">Malla 400 × 400 · reflexión en el suelo<br>emisión continua, terreno plano</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Mapa a sangre — cinta de parámetros arriba, placa de resultados sobre el mapa, inspector de punto</div>
+<div class="win blueprint" style="width:1360px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <div class="tbar"><span class="tdot"></span><span>Modelo Gaussiano de Pluma</span><span style="font-family:var(--font-body);font-weight:400;font-size:11.5px;opacity:.6;letter-spacing:.06em">v4.0</span><span style="margin-left:auto;display:flex;gap:16px;font-family:var(--font-body);font-size:11.5px;opacity:.75">Archivo · Serie · Exportar · Ayuda</span></div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-divider);border-bottom:1px solid var(--color-divider)">
+    <div style="background:var(--color-bg);padding:12px 16px">
+      <div class="sec" style="margin-bottom:10px">Fuente</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px 10px">
+        <div><label class="fl">Q <span class="un">g/s</span></label><input class="inp" value="10.0"></div>
+        <div><label class="fl">Hs <span class="un">m</span></label><input class="inp" value="50.0"></div>
+      </div>
+    </div>
+    <div style="background:var(--color-bg);padding:12px 16px">
+      <div class="sec" style="margin-bottom:10px">Chimenea · Briggs</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px 8px">
+        <div><label class="fl">d</label><input class="inp" style="padding-inline:6px" value="2.0"></div>
+        <div><label class="fl">vs</label><input class="inp" style="padding-inline:6px" value="15"></div>
+        <div><label class="fl">Ts</label><input class="inp" style="padding-inline:6px" value="420"></div>
+        <div><label class="fl">Ta</label><input class="inp" style="padding-inline:6px" value="300"></div>
+      </div>
+    </div>
+    <div style="background:var(--color-bg);padding:12px 16px">
+      <div class="sec" style="margin-bottom:10px">Meteorología</div>
+      <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:9px 10px">
+        <div><label class="fl">u₁₀ <span class="un">m/s</span></label><input class="inp" value="5.0"></div>
+        <div><label class="fl">Clase P-G</label>
+          <div class="seg" style="width:100%;display:grid;grid-template-columns:repeat(6,1fr)">
+            <span class="seg-opt" style="justify-content:center;padding:6px 0;font-size:12px">A</span>
+            <span class="seg-opt" style="justify-content:center;padding:6px 0;font-size:12px">B</span>
+            <span class="seg-opt" style="justify-content:center;padding:6px 0;font-size:12px">C</span>
+            <span class="seg-opt" style="justify-content:center;padding:6px 0;font-size:12px;background:var(--color-accent);color:var(--color-bg)">D</span>
+            <span class="seg-opt" style="justify-content:center;padding:6px 0;font-size:12px">E</span>
+            <span class="seg-opt" style="justify-content:center;padding:6px 0;font-size:12px">F</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--color-bg);padding:12px 16px;display:flex;gap:12px;align-items:flex-end">
+      <div style="flex:1">
+        <div class="sec" style="margin-bottom:10px">Dominio</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px 10px">
+          <div><label class="fl">X máx <span class="un">m</span></label><input class="inp" value="5000"></div>
+          <div><label class="fl">Ancho Y <span class="un">m</span></label><input class="inp" value="2000"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary blueprint" style="height:31px;padding-inline:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Calcular</button>
+    </div>
+  </div>
+
+  <div style="position:relative">
+    <canvas data-plume="1" data-cls="D" data-maxd="5000" data-tw="2000" width="2716" height="1000" style="width:1358px;height:500px;display:block"></canvas>
+
+    <div class="blueprint" style="position:absolute;top:22px;right:26px;width:262px;background:rgba(242,242,243,.94);padding:14px 15px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="sec" style="margin-bottom:11px">Resultados · clase {{ cD.cls }}</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div><div class="spec-u">C máx</div><div style="display:flex;align-items:baseline;gap:5px"><span class="spec-n">{{ cD.cmax }}</span><span class="spec-u">μg/m³</span></div></div>
+        <div style="display:flex;gap:16px">
+          <div><div class="spec-u">x en C máx</div><div style="display:flex;align-items:baseline;gap:4px"><span class="spec-n" style="font-size:21px">{{ cD.xmax }}</span><span class="spec-u">m</span></div></div>
+          <div><div class="spec-u">H efectiva</div><div style="display:flex;align-items:baseline;gap:4px"><span class="spec-n" style="font-size:21px">{{ cD.hfinal }}</span><span class="spec-u">m</span></div></div>
+        </div>
+        <div style="padding-top:9px;border-top:1px solid var(--color-divider);display:flex;flex-direction:column;gap:4px;font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.6)">
+          <div style="display:flex;justify-content:space-between"><span>u₁₀ → u_eff</span><span>5.0 → {{ cD.ueff }} m/s</span></div>
+          <div style="display:flex;justify-content:space-between"><span>p (clase {{ cD.cls }})</span><span>{{ cD.p }}</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Δh máx</span><span>{{ cD.dh }} m</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blueprint" style="position:absolute;left:26px;bottom:26px;width:236px;background:rgba(29,45,61,.93);color:#f2f2f3;padding:12px 14px"><i class="corner tl" style="color:rgba(242,242,243,.6)"></i><i class="corner tr" style="color:rgba(242,242,243,.6)"></i><i class="corner bl" style="color:rgba(242,242,243,.6)"></i><i class="corner br" style="color:rgba(242,242,243,.6)"></i>
+      <div style="font-family:var(--font-heading);font-weight:600;font-size:11px;letter-spacing:.13em;text-transform:uppercase;opacity:.7;margin-bottom:9px">Inspector de punto</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px">
+        <div style="flex:1"><label class="fl" style="color:rgba(242,242,243,.6)">x</label><input class="inp" style="background:rgba(242,242,243,.1);border-color:rgba(242,242,243,.3);color:#f2f2f3;min-height:27px" value="2400"></div>
+        <div style="flex:1"><label class="fl" style="color:rgba(242,242,243,.6)">y</label><input class="inp" style="background:rgba(242,242,243,.1);border-color:rgba(242,242,243,.3);color:#f2f2f3;min-height:27px" value="-180"></div>
+        <div style="flex:1"><label class="fl" style="color:rgba(242,242,243,.6)">z</label><input class="inp" style="background:rgba(242,242,243,.1);border-color:rgba(242,242,243,.3);color:#f2f2f3;min-height:27px" value="0"></div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:5px"><span style="font-family:var(--font-heading);font-weight:600;font-size:27px;line-height:1">{{ ptD.c }}</span><span style="font-size:10.5px;letter-spacing:.08em;opacity:.65">μg/m³</span></div>
+      <div style="margin-top:5px;font:10.5px ui-monospace,Menlo,monospace;opacity:.6">σy {{ ptD.sy }} m · σz {{ ptD.sz }} m · H {{ ptD.h }} m</div>
+    </div>
+
+    <div style="position:absolute;left:26px;top:22px;display:flex;align-items:center;gap:12px;font-size:11px;color:rgba(29,31,32,.6)">
+      <span style="display:flex;align-items:center;gap:6px"><span style="width:22px;height:0;border-top:1.5px dashed rgba(29,31,32,.85);box-shadow:none;background:rgba(29,31,32,0)"></span>isopleta {{ cD.iso }} μg/m³</span>
+      <span style="display:flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border:1px solid var(--color-accent-900);background:rgba(242,242,243,.6)"></span>chimenea</span>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:stretch;border-top:1px solid var(--color-divider)">
+    <div style="flex:1;min-width:0;padding:12px 16px 14px">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:7px"><span class="sec">Perfil y = 0</span><span style="font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.42)">0 → 5000 m</span></div>
+      <div class="blueprint" style="width:100%"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <canvas data-line="1" data-cls="D" data-maxd="5000" data-tw="2000" width="1900" height="260" style="width:100%;height:130px;display:block"></canvas>
+      </div>
+    </div>
+    <div style="width:330px;flex:none;border-left:1px solid var(--color-divider);padding:12px 16px 14px">
+      <div class="sec" style="margin-bottom:8px">Frecuencias por clase · serie 24 h</div>
+      <div style="display:flex;align-items:flex-end;gap:6px;height:56px">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:8px;background:var(--color-accent-300)"></div><span style="font:10px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)">A</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:14px;background:var(--color-accent-300)"></div><span style="font:10px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)">B</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:11px;background:var(--color-accent-300)"></div><span style="font:10px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)">C</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:40px;background:var(--color-accent)"></div><span style="font:10px ui-monospace,Menlo,monospace;color:var(--color-accent-800)">D</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:17px;background:var(--color-accent-300)"></div><span style="font:10px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)">E</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:6px;background:var(--color-accent-300)"></div><span style="font:10px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.55)">F</span></div>
+      </div>
+      <div style="margin-top:9px;font-size:11.5px;line-height:1.4;color:rgba(29,31,32,.6)">Dominante <b style="color:var(--color-accent-800)">D</b> con 0.417 — es la clase usada en el mapa.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Modo estudio — una decisión por pantalla, la física explicada, vista previa en vivo</div>
+<div class="win blueprint" style="width:880px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <div class="tbar"><span class="tdot"></span><span>Modelo Gaussiano de Pluma</span><span style="margin-left:auto;font-family:var(--font-body);font-weight:400;font-size:11.5px;opacity:.7">Modo estudio</span><span style="font-family:var(--font-body);font-weight:400;font-size:11.5px;opacity:.5">·</span><span style="font-family:var(--font-body);font-weight:400;font-size:11.5px;opacity:.7">Modo experto</span></div>
+
+  <div style="display:flex;align-items:center;gap:0;padding:0 20px;border-bottom:1px solid var(--color-divider);height:52px">
+    <div style="display:flex;align-items:center;gap:9px;padding-right:20px"><span class="stepn" style="border-color:var(--color-accent-700);background:var(--color-accent-700);color:var(--color-bg)">✓</span><span style="font-size:12.5px;color:rgba(29,31,32,.55)">Fuente</span></div>
+    <div style="width:26px;height:1px;background:var(--color-divider)"></div>
+    <div style="display:flex;align-items:center;gap:9px;padding:0 20px"><span class="stepn" style="border-color:var(--color-accent);background:var(--color-accent);color:var(--color-bg)">2</span><span style="font-family:var(--font-heading);font-weight:600;font-size:15px">Estabilidad atmosférica</span></div>
+    <div style="width:26px;height:1px;background:var(--color-divider)"></div>
+    <div style="display:flex;align-items:center;gap:9px;padding:0 20px"><span class="stepn">3</span><span style="font-size:12.5px;color:rgba(29,31,32,.55)">Dominio</span></div>
+    <div style="width:26px;height:1px;background:var(--color-divider)"></div>
+    <div style="display:flex;align-items:center;gap:9px;padding-left:20px"><span class="stepn">4</span><span style="font-size:12.5px;color:rgba(29,31,32,.55)">Resultados</span></div>
+  </div>
+
+  <div style="display:flex;align-items:stretch;min-height:508px">
+    <div style="flex:1;min-width:0;padding:24px 24px 20px;border-right:1px solid var(--color-divider)">
+      <div class="sec" style="margin-bottom:8px">Paso 2 de 4</div>
+      <h3 style="margin:0 0 8px;font-size:27px">¿Qué tan turbulenta está la atmósfera?</h3>
+      <p style="margin:0 0 18px;font-size:13.5px;line-height:1.55;color:rgba(29,31,32,.72);max-width:44ch">La clase de Pasquill-Gifford resume la turbulencia en una letra, de <b>A</b> (muy inestable, mediodía soleado y viento flojo) a <b>F</b> (muy estable, noche despejada). Es la decisión que más mueve el resultado: fija σy(x) y σz(x), y con ellos el ancho de la pluma.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:8px">
+        <div style="border:1px solid var(--color-accent);background:var(--color-accent);color:var(--color-bg);padding:9px 0;text-align:center"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;line-height:1">A</div><div style="font-size:9.5px;letter-spacing:.06em;opacity:.85;margin-top:3px">MUY INEST.</div></div>
+        <div style="border:1px solid var(--color-divider);padding:9px 0;text-align:center"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;line-height:1">B</div><div style="font-size:9.5px;letter-spacing:.06em;color:rgba(29,31,32,.5);margin-top:3px">INEST.</div></div>
+        <div style="border:1px solid var(--color-divider);padding:9px 0;text-align:center"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;line-height:1">C</div><div style="font-size:9.5px;letter-spacing:.06em;color:rgba(29,31,32,.5);margin-top:3px">LIG. INEST.</div></div>
+        <div style="border:1px solid var(--color-divider);padding:9px 0;text-align:center"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;line-height:1">D</div><div style="font-size:9.5px;letter-spacing:.06em;color:rgba(29,31,32,.5);margin-top:3px">NEUTRA</div></div>
+        <div style="border:1px solid var(--color-divider);padding:9px 0;text-align:center"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;line-height:1">E</div><div style="font-size:9.5px;letter-spacing:.06em;color:rgba(29,31,32,.5);margin-top:3px">ESTABLE</div></div>
+        <div style="border:1px solid var(--color-divider);padding:9px 0;text-align:center"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;line-height:1">F</div><div style="font-size:9.5px;letter-spacing:.06em;color:rgba(29,31,32,.5);margin-top:3px">MUY EST.</div></div>
+      </div>
+      <div style="font-size:11.5px;color:rgba(29,31,32,.5);margin-bottom:20px">O deja que la app la deduzca de una serie horaria — <a href="#1c" style="color:var(--color-accent-700)">clasificar desde datos</a></div>
+
+      <div style="padding:14px 16px;border:1px solid var(--color-divider);background:var(--color-accent-100)">
+        <div class="sec" style="color:var(--color-accent-800);margin-bottom:7px">Lo que cambia al elegir A</div>
+        <div style="font:12px/1.7 ui-monospace,Menlo,monospace;color:var(--color-accent-900)">σy = 0.22·x·(1+10⁻⁴x)<sup>-0.5</sup><br>σz = 0.20·x<br>p = 0.15 &nbsp;→&nbsp; u_eff = u₁₀·(H/10)<sup>0.15</sup></div>
+        <div style="margin-top:9px;font-size:12px;line-height:1.5;color:var(--color-accent-900);opacity:.85">Pluma ancha y de rápido crecimiento vertical: toca el suelo pronto, con un máximo alto y cercano a la chimenea.</div>
+      </div>
+
+      <div style="display:flex;gap:9px;margin-top:22px">
+        <button class="btn btn-secondary" style="font-size:13px">Atrás</button>
+        <button class="btn btn-primary blueprint" style="font-size:13.5px;padding-inline:20px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Continuar</button>
+        <span style="margin-left:auto;align-self:center;font:10.5px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.4)">Cálculo listo · saltar al resultado</span>
+      </div>
+    </div>
+
+    <div style="width:318px;flex:none;padding:24px 20px;display:flex;flex-direction:column;gap:14px;background:var(--color-neutral-100)">
+      <div class="sec">Vista previa en vivo</div>
+      <div class="blueprint" style="width:100%"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <canvas data-plume="1" data-cls="A" data-fixed="1" data-maxd="3000" data-tw="1200" width="556" height="360" style="width:278px;height:180px;display:block"></canvas>
+      </div>
+      <div class="ax"><span>0</span><span>1500</span><span>3000 m</span></div>
+
+      <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:9px;border-bottom:1px solid var(--color-divider)"><span style="font-size:12px;color:rgba(29,31,32,.6)">C máx</span><span style="display:flex;align-items:baseline;gap:4px"><span class="spec-n" style="font-size:23px">{{ fA.cmax }}</span><span class="spec-u">μg/m³</span></span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:9px;border-bottom:1px solid var(--color-divider)"><span style="font-size:12px;color:rgba(29,31,32,.6)">x en C máx</span><span style="display:flex;align-items:baseline;gap:4px"><span class="spec-n" style="font-size:23px">{{ fA.xmax }}</span><span class="spec-u">m</span></span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:12px;color:rgba(29,31,32,.6)">H efectiva</span><span style="display:flex;align-items:baseline;gap:4px"><span class="spec-n" style="font-size:23px">{{ fA.hfinal }}</span><span class="spec-u">m</span></span></div>
+      </div>
+
+      <div style="margin-top:auto;padding:11px 13px;border-left:2px solid var(--color-accent);background:var(--color-bg)">
+        <div class="sec" style="margin-bottom:5px">Comparado con D (neutra)</div>
+        <div style="font-size:12px;line-height:1.5;color:rgba(29,31,32,.75)">El máximo sube de <b>{{ cD.cmax }}</b> a <b>{{ fA.cmax }}</b> μg/m³ y se acerca de <b>{{ cD.xmax }}</b> a <b>{{ fA.xmax }}</b> m.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Detalle — cálculo puntual como panel acoplado, y los estados de validación de los campos</div>
+<div style="display:flex;flex-direction:column;gap:22px;width:470px">
+  <div class="win blueprint" style="width:470px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="tbar" style="background:var(--color-accent-900)"><span>Cálculo puntual</span><span style="margin-left:auto;font-family:var(--font-body);font-weight:400;font-size:11.5px;opacity:.6">Esc para cerrar</span></div>
+    <div style="padding:18px 20px 20px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px">
+        <div><label class="fl">x <span class="un">m</span></label><input class="inp" value="2400"></div>
+        <div><label class="fl">y <span class="un">m</span></label><input class="inp" value="-180"></div>
+        <div><label class="fl">z receptor <span class="un">m</span></label><input class="inp" value="1.5"></div>
+      </div>
+      <button class="btn btn-primary btn-block blueprint" style="margin-top:14px;font-size:13.5px;padding-block:9px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Calcular en este punto</button>
+
+      <div class="blueprint" style="margin-top:20px;padding:16px 16px 14px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="sec" style="margin-bottom:9px">Resultado</div>
+        <div style="display:flex;align-items:baseline;gap:6px"><span class="spec-n" style="font-size:38px">{{ ptD.c }}</span><span class="spec-u">μg/m³</span></div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px;font:11px ui-monospace,Menlo,monospace;color:rgba(29,31,32,.65)">
+          <div style="display:flex;justify-content:space-between;padding-bottom:5px;border-bottom:1px solid rgba(29,31,32,.07)"><span>u_eff</span><span>{{ cD.ueff }} m/s</span></div>
+          <div style="display:flex;justify-content:space-between;padding-bottom:5px;border-bottom:1px solid rgba(29,31,32,.07)"><span>H_eff en x</span><span>{{ ptD.h }} m</span></div>
+          <div style="display:flex;justify-content:space-between"><span>σy · σz</span><span>{{ ptD.sy }} · {{ ptD.sz }} m</span></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11.5px;line-height:1.45;color:rgba(29,31,32,.5)">Clase {{ cD.cls }} · Briggs activo · corrección de viento activa. El punto queda marcado en el mapa.</div>
+    </div>
+  </div>
+
+  <div class="win blueprint" style="width:470px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="padding:18px 20px 20px">
+      <div class="sec" style="margin-bottom:14px">Estados de campo</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div><label class="fl">Correcto — valor dentro de rango</label><input class="inp" style="border-color:var(--color-accent);box-shadow:inset 0 0 0 1px var(--color-accent)" value="15.0"><div style="margin-top:4px;font-size:11px;color:var(--color-accent-700)">vs típico de chimenea industrial: 5 – 25 m/s</div></div>
+        <div><label class="fl">Inválido — fuera de dominio físico</label><input class="inp" style="background:#fbecec;border-color:#a33a3a;box-shadow:inset 0 0 0 1px #a33a3a" value="-3"><div style="margin-top:4px;font-size:11px;color:#8a2f2f">Q debe ser mayor que 0. El cálculo se mantiene en el último valor válido.</div></div>
+        <div><label class="fl" style="color:rgba(29,31,32,.35)">Deshabilitado — Briggs desactivado</label><input class="inp" style="opacity:.45" value="420.0" disabled=""><div style="margin-top:4px;font-size:11px;color:rgba(29,31,32,.4)">Se usa H = Hs. Activa Briggs para editar.</div></div>
+        <div><label class="fl">Aviso — sin datos de serie</label><input class="inp" value="Dominante (serie)"><div style="margin-top:6px;display:flex;gap:9px;padding:8px 10px;background:var(--color-accent-100);border-left:2px solid var(--color-accent)"><span style="font-size:11.5px;line-height:1.4;color:var(--color-accent-900)">No hay frecuencias cargadas. Se usará clase D hasta que generes o cargues una serie. <a href="#1d" style="color:var(--color-accent-700)">Generar serie de 24 h</a></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Prueba: «desarrolla <a class="dv-oid" href="#1a">1a</a> con las 4 etapas del riel» · «lleva la placa de resultados de <a class="dv-oid" href="#1b">1b</a> al layout de <a class="dv-oid" href="#1a">1a</a>» · «más opciones para el modo estudio»</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;isoLimit&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:22,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1,&quot;max&quot;:100,&quot;step&quot;:1,&quot;unit&quot;:&quot;μg/m³&quot;,&quot;section&quot;:&quot;Modelo&quot;},&quot;stabilityClass&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;F&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Modelo&quot;},&quot;showValidation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estados&quot;}}">
+const WIND_P = {A:.15,B:.15,C:.20,D:.25,E:.40,F:.60};
+
+function sig(x, cls) {
+  x = Math.max(x, .001);
+  const t = {A:1,B:2,C:3,D:4,E:5,F:6}[cls] || 4;
+  if (t === 1) return [.22*x*Math.pow(1+1e-4*x,-.5), .20*x];
+  if (t === 2) return [.16*x*Math.pow(1+1e-4*x,-.5), .12*x];
+  if (t === 3) return [.11*x*Math.pow(1+1e-4*x,-.5), .08*x*Math.pow(1+2e-4*x,-.5)];
+  if (t === 4) return [.08*x*Math.pow(1+1e-4*x,-.5), .06*x*Math.pow(1+15e-4*x,-.5)];
+  if (t === 5) return [.06*x*Math.pow(1+1e-4*x,-.5), .03*x*Math.pow(1+3e-4*x,-1)];
+  return [.04*x*Math.pow(1+1e-4*x,-.5), .016*x*Math.pow(1+3e-4*x,-1)];
+}
+
+function buoy(d, vs, Ts, Ta) {
+  return 9.81 * vs * d * d * Math.max(Ts - Ta, 0) / (4 * Math.max(Ts, 1));
+}
+
+function dhMax(F, u, cls, Ta) {
+  if ("ABCD".includes(cls)) {
+    const xf = F < 55 ? 49 * Math.pow(F, .625) : 119 * Math.pow(F, .4);
+    return 1.6 * Math.cbrt(F) * Math.pow(xf, 2/3) / u;
+  }
+  const s = Math.max((9.81 / Math.max(Ta, 1)) * (cls === "E" ? .020 : .035), 1e-4);
+  return 2.4 * Math.cbrt(F / (u * s));
+}
+
+function dhAt(x, F, u, cls, cap) {
+  return Math.min(1.6 * Math.cbrt(F) * Math.pow(Math.max(x, 0), 2/3) / u, cap);
+}
+
+function conc(Q, H, u, x, y, z, sy, sz) {
+  if (x <= 0) return 0;
+  const den = 2 * Math.PI * u * sy * sz || 1e-10;
+  const a = Math.max(-(y*y)/(2*sy*sy), -700);
+  const b = Math.max(-Math.pow(z - H, 2)/(2*sz*sz), -700);
+  const c = Math.max(-Math.pow(z + H, 2)/(2*sz*sz), -700);
+  return (Q / den) * Math.exp(a) * (Math.exp(b) + Math.exp(c));
+}
+
+const STOPS = [[0,242,242,243],[.12,225,236,214],[.30,150,190,120],[.50,214,206,110],[.70,224,158,66],[.86,199,92,45],[1,168,32,32]];
+function ramp(t) {
+  for (let i = 1; i < STOPS.length; i++) {
+    if (t <= STOPS[i][0]) {
+      const a = STOPS[i-1], b = STOPS[i];
+      const f = (t - a[0]) / (b[0] - a[0] || 1);
+      return [a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f, a[3]+(b[3]-a[3])*f];
+    }
+  }
+  return [29,45,61];
+}
+
+class Component extends DCLogic {
+  cfg(cls, maxd, tw, iso) {
+    const base = {Q:10, Hs:50, u10:5, z:0, d:2, vs:15, Ts:420, Ta:300};
+    return Object.assign({}, base, {cls, maxd, tw, iso});
+  }
+
+  solve(c) {
+    const F = buoy(c.d, c.vs, c.Ts, c.Ta);
+    const p = WIND_P[c.cls] ?? .25;
+    const dh1 = F < 1e-3 ? 0 : dhMax(F, c.u10, c.cls, c.Ta);
+    const Href = Math.max(c.Hs + dh1, 1);
+    const ueff = Math.max(c.u10 * Math.pow(Href/10, p), .1);
+    const cap = F < 1e-3 ? 0 : dhMax(F, ueff, c.cls, c.Ta);
+    const Hfinal = c.Hs + cap;
+    let cmax = 0, xmax = 0;
+    for (let i = 1; i <= 3000; i++) {
+      const x = i / 3000 * c.maxd;
+      const [sy, sz] = sig(x, c.cls);
+      const H = c.Hs + dhAt(x, F, ueff, c.cls, cap);
+      const v = conc(c.Q, H, ueff, x, 0, c.z, sy, sz) * 1e6;
+      if (v > cmax) { cmax = v; xmax = x; }
+    }
+    let n = 0;
+    const NX = 300, NY = 300;
+    for (let i = 0; i < NX; i++) {
+      const x = (i + .5) / NX * c.maxd;
+      const [sy, sz] = sig(x, c.cls);
+      const H = c.Hs + dhAt(x, F, ueff, c.cls, cap);
+      for (let j = 0; j < NY; j++) {
+        const y = ((j + .5)/NY - .5) * c.tw;
+        if (conc(c.Q, H, ueff, x, y, c.z, sy, sz) * 1e6 >= c.iso) n++;
+      }
+    }
+    const area = n * (c.maxd/NX) * (c.tw/NY);
+    return {F, p, ueff, cap, Hfinal, cmax, xmax, area};
+  }
+
+  view(c) {
+    const s = this.solve(c);
+    return {
+      cls: c.cls, iso: c.iso.toFixed(0),
+      p: s.p.toFixed(2),
+      F: s.F.toFixed(1),
+      dh: s.cap.toFixed(1),
+      ueff: s.ueff.toFixed(2),
+      cmax: s.cmax.toFixed(1),
+      xmax: s.xmax.toFixed(0),
+      hfinal: s.Hfinal.toFixed(1),
+      area: Math.round(s.area).toLocaleString("es-ES")
+    };
+  }
+
+  point(c, x, y, z) {
+    const s = this.solve(c);
+    const [sy, sz] = sig(x, c.cls);
+    const H = c.Hs + dhAt(x, s.F, s.ueff, c.cls, s.cap);
+    const v = conc(c.Q, H, s.ueff, x, y, z, sy, sz) * 1e6;
+    return {c: v.toFixed(2), sy: sy.toFixed(0), sz: sz.toFixed(0), h: H.toFixed(1)};
+  }
+
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+
+  paint() {
+    requestAnimationFrame(() => {
+      document.querySelectorAll("canvas[data-plume]").forEach(cv => this.field(cv));
+      document.querySelectorAll("canvas[data-line]").forEach(cv => this.line(cv));
+    });
+  }
+
+  cfgOf(cv) {
+    const cls = cv.dataset.cls === "A" && !cv.dataset.fixed ? (this.props.stabilityClass ?? "A") : cv.dataset.cls;
+    const iso = cv.dataset.cls === "A" ? (this.props.isoLimit ?? 25) : 10;
+    return this.cfg(cls, +cv.dataset.maxd, +cv.dataset.tw, iso);
+  }
+
+  field(cv) {
+    const c = this.cfgOf(cv), s = this.solve(c);
+    const W = cv.width, H = cv.height, ctx = cv.getContext("2d");
+    const img = ctx.createImageData(W, H), D = img.data;
+    const grid = new Float32Array(W * H);
+    for (let i = 0; i < W; i++) {
+      const x = (i + .5) / W * c.maxd;
+      const [sy, sz] = sig(x, c.cls);
+      const Hx = c.Hs + dhAt(x, s.F, s.ueff, c.cls, s.cap);
+      for (let j = 0; j < H; j++) {
+        const y = ((j + .5) / H - .5) * c.tw;
+        const v = conc(c.Q, Hx, s.ueff, x, y, c.z, sy, sz) * 1e6;
+        grid[j * W + i] = v;
+        const col = ramp(Math.pow(Math.min(v / (s.cmax || 1), 1), .45));
+        const k = (j * W + i) * 4;
+        D[k] = col[0]; D[k+1] = col[1]; D[k+2] = col[2]; D[k+3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+
+    const dpr = 2, w = W / dpr, h = H / dpr;
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(29,31,32,.16)";
+    const stepX = c.maxd / 4;
+    for (let g = stepX; g < c.maxd - 1; g += stepX) {
+      const px = Math.round(g / c.maxd * w) + .5;
+      ctx.beginPath(); ctx.moveTo(px, 0); ctx.lineTo(px, h); ctx.stroke();
+    }
+    ctx.beginPath(); ctx.moveTo(0, Math.round(h/2) + .5); ctx.lineTo(w, Math.round(h/2) + .5);
+    ctx.strokeStyle = "rgba(242,242,243,.35)"; ctx.stroke();
+
+    // isopleth traced from the computed field
+    const top = [], bot = [];
+    for (let i = 0; i < W; i++) {
+      let t = -1, b = -1;
+      for (let j = 0; j < H; j++) if (grid[j*W+i] >= c.iso) { if (t < 0) t = j; b = j; }
+      if (t >= 0) { top.push([i/dpr, t/dpr]); bot.push([i/dpr, b/dpr]); }
+    }
+    if (top.length > 2) {
+      const path = top.concat(bot.reverse());
+      ctx.beginPath();
+      ctx.moveTo(path[0][0], path[0][1]);
+      for (const pt of path) ctx.lineTo(pt[0], pt[1]);
+      ctx.closePath();
+      ctx.setLineDash([5, 4]);
+      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = "rgba(29,31,32,.85)";
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    ctx.fillStyle = "rgba(242,242,243,.7)";
+    ctx.strokeStyle = "rgba(29,45,61,.9)";
+    ctx.lineWidth = 1;
+    ctx.fillRect(1.5, h/2 - 4.5, 9, 9);
+    ctx.strokeRect(1.5, h/2 - 4.5, 9, 9);
+    ctx.restore();
+  }
+
+  line(cv) {
+    const c = this.cfgOf(cv), s = this.solve(c);
+    const W = cv.width, H = cv.height, ctx = cv.getContext("2d"), dpr = 2;
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    const w = W/dpr, h = H/dpr, pad = 6, top = s.cmax * 1.12 || 1;
+    ctx.fillStyle = "#f2f2f3"; ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(29,31,32,.1)"; ctx.lineWidth = 1;
+    const stepX = c.maxd / 4;
+    for (let g = stepX; g < c.maxd - 1; g += stepX) {
+      const px = Math.round(g / c.maxd * w) + .5;
+      ctx.beginPath(); ctx.moveTo(px, 0); ctx.lineTo(px, h); ctx.stroke();
+    }
+    const pts = [];
+    const N = Math.round(w);
+    for (let i = 0; i <= N; i++) {
+      const x = i / N * c.maxd;
+      const [sy, sz] = sig(x, c.cls);
+      const Hx = c.Hs + dhAt(x, s.F, s.ueff, c.cls, s.cap);
+      const v = conc(c.Q, Hx, s.ueff, x, 0, c.z, sy, sz) * 1e6;
+      pts.push([i / N * w, h - pad - (v / top) * (h - pad * 2)]);
+    }
+    ctx.beginPath();
+    ctx.moveTo(0, h - pad);
+    for (const p of pts) ctx.lineTo(p[0], p[1]);
+    ctx.lineTo(w, h - pad);
+    ctx.closePath();
+    const grad = ctx.createLinearGradient(0, h - pad, 0, pad);
+    grad.addColorStop(0, "rgba(150,190,120,.30)");
+    grad.addColorStop(.55, "rgba(224,158,66,.35)");
+    grad.addColorStop(1, "rgba(168,32,32,.40)");
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (const p of pts) ctx.lineTo(p[0], p[1]);
+    ctx.strokeStyle = "#a82020";
+    ctx.lineWidth = 1.6;
+    ctx.stroke();
+    // isopleth level
+    const yi = h - pad - (c.iso / top) * (h - pad * 2);
+    if (yi > 0 && yi < h) {
+      ctx.beginPath(); ctx.moveTo(0, yi); ctx.lineTo(w, yi);
+      ctx.setLineDash([5, 4]); ctx.strokeStyle = "rgba(29,45,61,.5)"; ctx.lineWidth = 1;
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+    // max marker
+    const mx = s.xmax / c.maxd * w, my = h - pad - (s.cmax / top) * (h - pad * 2);
+    ctx.strokeStyle = "#1d2d3d"; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(mx - 5, my - 5); ctx.lineTo(mx + 5, my + 5);
+    ctx.moveTo(mx + 5, my - 5); ctx.lineTo(mx - 5, my + 5);
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(29,45,61,.35)";
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(mx, my + 6); ctx.lineTo(mx, h - pad); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+
+  renderVals() {
+    const iso = this.props.isoLimit ?? 25;
+    const sel = this.props.stabilityClass ?? "A";
+    const cA = this.cfg(sel, 3000, 1200, iso);
+    const cD = this.cfg("D", 5000, 2000, 10);
+    const DESC = {A:"Muy inestable", B:"Inestable", C:"Ligeramente inestable", D:"Neutra", E:"Estable", F:"Muy estable"};
+    return {
+      clsDesc: DESC[sel] || "Neutra",
+      cA: this.view(cA),
+      fA: this.view(this.cfg("A", 3000, 1200, 25)),
+      cD: this.view(cD),
+      ptD: this.point(cD, 2400, -180, 0),
+      showVal: this.props.showValidation ?? true
+    };
+  }
+}
+
+</script>
+</body>
+</html>
